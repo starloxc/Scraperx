@@ -1,0 +1,80 @@
+---
+import GoogleAnalytics from '@/components/astro/GoogleAnalytics.astro'
+import GeistLatinCriticalFont from '@/components/astro/critical-fonts/geist-latin.astro'
+import '@/styles/global.css'
+import selfHost from '../../self-host'
+
+interface Props {
+  criticalFontDisabled?: boolean | undefined
+  title?: string | undefined
+  description?: string | undefined
+}
+
+const {
+  criticalFontDisabled = false,
+  title = 'Secret - sharing and safer sharing',
+  description = 'Share secrets that stay secret. Send encrypted text and files without giving the server the key.',
+} = Astro.props
+const ga4 = selfHost.configs.ga4
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/logos/dark.svg?v=2" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/logos/dark.png?v=2" />
+    <link rel="mask-icon" href="/logos/solid.svg?v=2" color="#09090B" />
+    <script is:inline>
+      const userAgent = navigator.userAgent
+      const isSafari =
+        /Safari/i.test(userAgent) &&
+        !/Android|Chrome|Chromium|CriOS|Edg|FxiOS|OPR/i.test(userAgent)
+
+      if (isSafari) {
+        document.querySelectorAll('link[rel~="icon"]').forEach(link => {
+          const type = link.getAttribute('type')
+          link.setAttribute(
+            'href',
+            type === 'image/png' ? '/logos/light.png?v=2' : '/logos/light.svg?v=2',
+          )
+        })
+      }
+    </script>
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+
+    <!-- Primary Tags -->
+    <meta name="title" content="Secret" />
+    <meta
+      name="description"
+      content="Share secrets that stay secret. Send encrypted text and files without giving the server the key."
+    />
+
+    <!-- Twitter -->
+    <meta property="twitter:title" content="Secret" />
+    <meta
+      property="twitter:description"
+      content="Share secrets that stay secret. Send encrypted text and files without giving the server the key."
+    />
+    <meta property="twitter:image" content="/og.png" />
+    <meta property="twitter:card" content="summary_large_image" />
+
+    <!-- Facebook -->
+    <meta property="og:title" content="Secret" />
+    <meta
+      property="og:description"
+      content="Share secrets that stay secret. Send encrypted text and files without giving the server the key."
+    />
+    <meta property="og:image" content="/og.png" />
+    <meta property="og:type" content="website" />
+    {ga4 ? <GoogleAnalytics measurementId={ga4} /> : null}
+
+    {criticalFontDisabled ? null : <GeistLatinCriticalFont />}
+    <slot name="head" />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

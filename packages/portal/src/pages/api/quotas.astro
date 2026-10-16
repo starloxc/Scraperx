@@ -1,0 +1,25 @@
+---
+import SecretFooter from '@/components/astro/secret-footer.astro'
+import SecretHeader from '@/components/astro/secret-header.astro'
+import { ApiNav } from '@/components/api-nav'
+import { QuotasIsland } from '@/islands/api/quotas.island'
+import HeadLayout from '@/layouts/head.layout.astro'
+---
+
+<HeadLayout
+  title="Quotas - Secret API"
+  description="Manage API daily rate limits, switch subscription tiers, and top-up metered pay-per-request credits.">
+  <main
+    class="flex min-h-svh flex-col bg-white [background-image:radial-gradient(var(--border)_1px,transparent_1px)] [background-size:22px_22px] text-zinc-950">
+    <SecretHeader compact showBrandText={false} />
+
+    <div class="w-full flex-1 pb-16">
+      <ApiNav currentPath="/api/quotas" />
+      <div class="px-4">
+        <QuotasIsland client:load />
+      </div>
+    </div>
+
+    <SecretFooter />
+  </main>
+</HeadLayout>

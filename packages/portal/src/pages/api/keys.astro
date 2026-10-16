@@ -1,0 +1,25 @@
+---
+import SecretFooter from '@/components/astro/secret-footer.astro'
+import SecretHeader from '@/components/astro/secret-header.astro'
+import { ApiNav } from '@/components/api-nav'
+import { KeysIsland } from '@/islands/api/keys.island'
+import HeadLayout from '@/layouts/head.layout.astro'
+---
+
+<HeadLayout
+  title="Keys - Secret API"
+  description="Manage cryptographically isolated, per-provider API keys and inspect request quotas.">
+  <main
+    class="flex min-h-svh flex-col bg-white [background-image:radial-gradient(var(--border)_1px,transparent_1px)] [background-size:22px_22px] text-zinc-950">
+    <SecretHeader compact showBrandText={false} />
+
+    <div class="w-full flex-1 pb-16">
+      <ApiNav currentPath="/api/keys" />
+      <div class="px-4">
+        <KeysIsland client:load />
+      </div>
+    </div>
+
+    <SecretFooter />
+  </main>
+</HeadLayout>

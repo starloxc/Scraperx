@@ -1,0 +1,8 @@
+{
+  "name": "Secret & Scraper API Hub",
+  "description": "Encrypted sharing platform with developer API Hub, API key management, tiered request quotas, and multi-provider scrapers for Donghua, Anime, and Movies.",
+  "permissions": [],
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

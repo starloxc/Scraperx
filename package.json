@@ -1,0 +1,17 @@
+{
+  "name": "secret-workspace",
+  "version": "0.0.0",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=portal",
+    "build": "npm run build --workspace=portal",
+    "preview": "npm run preview --workspace=portal",
+    "lint": "npm run lint --workspace=portal"
+  },
+  "devDependencies": {
+    "wrangler": "^4.97.0"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "name": "secret-self-host",
+  "version": "1.2.1",
+  "private": false,
+  "type": "commonjs",
+  "scripts": {
+    "dev": "funcgo dev --",
+    "build": "funcgo build",
+    "lint": "eslint .",
+    "prettier": "prettier --write .",
+    "release": "npm run build && npm publish --access public --no-git-checks"
+  },
+  "prettier": "@unix/prettier",
+  "files": [
+    "dist",
+    "package.json",
+    "tsconfig.json"
+  ],
+  "func": {
+    "entry": "src/index.ts",
+    "outDir": "dist"
+  },
+  "bin": {
+    "secret-self-host": "./dist/bin.js"
+  },
+  "dependencies": {
+    "func": "^2.1.0",
+    "jsonc-parser": "^3.3.1",
+    "yocto-spinner": "^1.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.12.4",
+    "@unix/eslint": "^1.3.0",
+    "@unix/prettier": "^0.1.0",
+    "eslint": "^10.8.0",
+    "funcgo": "^0.1.3",
+    "prettier": "^3.8.3",
+    "typescript": "^6.0.3"
+  }
+}

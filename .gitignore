@@ -1,0 +1,8 @@
+**/.env
+**/.dev.vars
+**/.dev.vars.*
+**/.wrangler/
+**/dist/
+**/.astro/
+**/.idea/
+tmp
